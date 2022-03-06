@@ -44,24 +44,12 @@ public class DLinkedList implements MyList{
         }
         //Case 3: insert as head
         else if (index == 0){
-            //Case 3-1: list size == 1
-            if (length == 1){
-                head = newNode;
-                tail = newNode;
-                head.prev = null;
-                tail.next = null;
-                length++;
-                return true;
-            }
-            //Case 3-2: list size > 1
-            else{
-                head.prev = newNode;
-                newNode.next = head;
-                newNode.prev = null;
-                head = newNode;
-                length++;
-                return true;
-            }
+            head.prev = newNode;
+            newNode.next = head;
+            newNode.prev = null;
+            head = newNode;
+            length++;
+            return true;
         }
         //Case 4: insert as tail
         else if (index == length){
@@ -148,7 +136,12 @@ public class DLinkedList implements MyList{
      * @return integer value: size of the list
      */
     public int size(){
-        return length;
+        if (head == null){//if the list is empty, return -1
+            return -1;
+        }
+        else{
+            return length;
+        }
     }
 
     // replaces the element at 'index' with 'item'.
@@ -165,12 +158,12 @@ public class DLinkedList implements MyList{
         Node newNode = new Node(item);
         //Case 1: list is empty
         if (head == null){
-            System.out.println("Error: the list is empty, can't remove element");
+            System.out.println("Error: the list is empty, can't replace element");
             return false;
         }
         //Case 2: index out of bound
         else if (index < 0 || index > length - 1){
-            System.out.println("Error: index out of bound, can't remove element");
+            System.out.println("Error: index out of bound, can't replace element");
             return false;
         }
         //Case 3: replace head
@@ -187,6 +180,7 @@ public class DLinkedList implements MyList{
             else{
                 newNode.next = head.next;
                 newNode.prev = null;
+                head.next.prev = newNode;
                 head = newNode;
                 return true;
             }
@@ -195,6 +189,7 @@ public class DLinkedList implements MyList{
         else if (index == length - 1){
             newNode.next = null;
             newNode.prev = tail.prev;
+            tail.prev.next = newNode;
             tail = newNode;
             return true;
         }
@@ -206,7 +201,8 @@ public class DLinkedList implements MyList{
             }
             newNode.next = curr.next;
             newNode.prev = curr.prev;
-            newNode = curr;
+            curr.prev.next = newNode;
+            curr.next.prev = newNode;
             return true;
         }
     }
@@ -277,12 +273,12 @@ public class DLinkedList implements MyList{
         //Case 1: list is empty
         if (head == null){
             System.out.println("Error: the list is empty, can't get element");
-            return false;
+            return null;
         }
         //Case 2: index out of bound
         else if (index < 0 || index > length - 1){
             System.out.println("Error: index out of bound, can't get element");
-            return false;
+            return null;
         }
         //Case 3: 0 <= index <= length - 1
         else{
