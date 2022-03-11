@@ -32,7 +32,7 @@ public class WeirdQueue {
     /**
      * Worst case running time: O(1)
      * Error condition: when s1 is empty (when the queue is not storing any elements), trying to dequeue from an empty
-     * queue is a queue underflow, so sen error message
+     * queue is a queue underflow, so send error message
      * @return returns null when queue underflow, returns the top of s1 if the queue is not empty (s1 is not empty)
      */
     public Object dequeue(){
