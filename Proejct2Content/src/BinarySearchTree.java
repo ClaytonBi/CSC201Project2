@@ -47,7 +47,7 @@ public class BinarySearchTree {
 
     /**
      * Function: takes a sorted array and convert it into a balanced binary search tree, and return the root
-     * Error condition: present error when array is null or is empty, or when the index array is out of bounds when accessing an array element
+     * Error condition: present error when array is null or is empty, or when the index array is out of bounds when accessing an array element (low or high invalid)
      * @param array
      * @param low
      * @param high
