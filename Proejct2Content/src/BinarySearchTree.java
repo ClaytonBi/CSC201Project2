@@ -91,68 +91,91 @@ public class BinarySearchTree {
     }
 
     /**
-     * Function: traverse and print the int variables stored in the tree nodes in preorder
      * Error condition: when the tree is empty (root is null), show error
-     * @param node
      */
-    public static void preorder_traversal(TreeNode node){
+    public static void preorder_traversal(){
         //when the root is null, print error message and return
         if (root == null){
             System.out.println("Error: tree is empty, can't traverse");
             return;
         }
-        //base case
-        if (node == null){
-            return;
-        }
         else{
-            System.out.print(node.getItem() + " ");
-            preorder_traversal(node.getLeft());
-            preorder_traversal(node.getRight());
+            preorder_traversal_helper(root);
         }
     }
 
     /**
-     * Function: traverse and print the int variables stored in the tree nodes in postorder
-     * Error condition: when the tree is empty (root is null), show error
+     * Function: traverse and print the int variables stored in the tree nodes in preorder
      * @param node
      */
-    public static void postorder_traversal(TreeNode node){
-        //when the root is null, print error message and return
-        if (root == null){
-            System.out.println("Error: tree is empty, can't traverse");
-            return;
-        }
+    public static void preorder_traversal_helper(TreeNode node){
         //base case
         if (node == null){
             return;
         }
         else{
-            postorder_traversal(node.getLeft());
-            postorder_traversal(node.getRight());
             System.out.print(node.getItem() + " ");
+            preorder_traversal_helper(node.getLeft());
+            preorder_traversal_helper(node.getRight());
+        }
+    }
+
+    /**
+     * Error condition: when the tree is empty (root is null), show error
+     */
+    public static void postorder_traversal(){
+        //when the root is null, print error message and return
+        if (root == null){
+            System.out.println("Error: tree is empty, can't traverse");
+            return;
+        }
+        else{
+            postorder_traversal_helper(root);
+        }
+    }
+    /**
+     * Function: traverse and print the int variables stored in the tree nodes in postorder
+     * @param node
+     */
+    public static void postorder_traversal_helper(TreeNode node){
+        //base case
+        if (node == null){
+            return;
+        }
+        else{
+            postorder_traversal_helper(node.getLeft());
+            postorder_traversal_helper(node.getRight());
+            System.out.print(node.getItem() + " ");
+        }
+    }
+
+    /**
+     * Error condition: when the tree is empty (root is null), show error
+     */
+    public static void inorder_traversal(){
+        //when the root is null, print error message and return
+        if (root == null){
+            System.out.println("Error: tree is empty, can't traverse");
+            return;
+        }
+        else{
+            inorder_traversal_helper(root);
         }
     }
 
     /**
      * Function: traverse and print the int variables stored in the tree nodes in inorder
-     * Error condition: when the tree is empty (root is null), show error
      * @param node
      */
-    public static void inorder_traversal(TreeNode node){
-        //when the root is null, print error message and return
-        if (root == null){
-            System.out.println("Error: tree is empty, can't traverse");
-            return;
-        }
+    public static void inorder_traversal_helper(TreeNode node){
         //base case
         if (node == null){
             return;
         }
         else{
-            inorder_traversal(node.getLeft());
+            inorder_traversal_helper(node.getLeft());
             System.out.print(node.getItem() + " ");
-            inorder_traversal(node.getRight());
+            inorder_traversal_helper(node.getRight());
         }
     }
 
@@ -163,12 +186,12 @@ public class BinarySearchTree {
         tree.setRoot(tree.ArrayToTree(arr, 0, arr.length - 1));
         System.out.println();
         System.out.println("Preorder:");
-        tree.preorder_traversal(tree.getRoot());
+        tree.preorder_traversal();
         System.out.println();
         System.out.println("Postorder:");
-        tree.postorder_traversal(tree.getRoot());
+        tree.postorder_traversal();
         System.out.println();
         System.out.println("Inorder");
-        tree.inorder_traversal(tree.getRoot());
+        tree.inorder_traversal();
     }
 }
