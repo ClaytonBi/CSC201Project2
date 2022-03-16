@@ -9,10 +9,18 @@ public class DLinkedList implements MyList{
         }
     }
 
-    private Node head = null;
-    private Node tail = null;
-    private int length = 0;
+    private Node head;
+    private Node tail;
+    private int length;
 
+    /**
+     * Default constructor
+     */
+    public DLinkedList(){
+        head = null;
+        tail = null;
+        length = 0;
+    }
 
     /**
      * function: insert 'item' at 'index'
