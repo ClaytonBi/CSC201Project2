@@ -21,7 +21,7 @@ public class MyStack {
         myList.insert(0,item);
     }
 
-    //print error message and return null if the stack(LinkedList) is empty, otherwise remove the head from the array and
+    //print error message （DLinkedList will do this） and return null if the stack(LinkedList) is empty, otherwise remove the head from the array and
     //return the removed item
     public Object pop(){
         Object target = myList.get(0);
