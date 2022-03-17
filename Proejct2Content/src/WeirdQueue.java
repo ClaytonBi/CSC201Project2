@@ -22,7 +22,7 @@ public class WeirdQueue {
             s2.push(s1.pop());
         }
         //put new item into s2
-        s1.push(item);
+        s2.push(item);
         //push everything back to s1
         while(!s2.isEmpty()){
             s1.push(s2.pop());
