@@ -4,8 +4,16 @@ public class DLinkedList implements MyList{
         Node prev;
         Node next;
 
+        private Node(){
+            item = null;
+            prev = null;
+            next = null;
+        }
+
         private Node(Object item){
             this.item = item;
+            prev = null;
+            next = null;
         }
     }
 
