@@ -46,6 +46,14 @@ public class BinarySearchTree {
     }
 
     /**
+     * Function: takes a sorted array and convert it into a balanced binary search tree using ArrayToTree, assign the returned result to root
+     * @param array
+     */
+    public static void UserArrayToTree(int[] array){
+        root = ArrayToTree(array, 0, array.length - 1);
+    }
+
+    /**
      * Function: takes a sorted array and convert it into a balanced binary search tree, and return the root
      * Error condition: present error when array is null or is empty, or when the index array is out of bounds when accessing an array element (low or high invalid)
      * @param array
@@ -183,7 +191,7 @@ public class BinarySearchTree {
     public static void main(String[] args){
         BinarySearchTree tree = new BinarySearchTree();
         int arr[] = new int[] {7,8,9,10,12,15,17};
-        tree.setRoot(tree.ArrayToTree(arr, 0, arr.length - 1));
+        tree.UserArrayToTree(arr);
         System.out.println();
         System.out.println("Preorder:");
         tree.preorder_traversal();
