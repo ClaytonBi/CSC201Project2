@@ -46,11 +46,28 @@ public class BinarySearchTree {
     }
 
     /**
+     * Function: test if the array is sorted in increasing order
+     * @param array
+     * @param n
+     * @return true if the array is sorted in increasing order, false if it is not
+     */
+    public static boolean isSortedArray(int[] array, int n){
+        if(n == 1 || n == 0) return true;
+        return array[n-2] <= array[n-1] && isSortedArray(array, n-1);
+    }
+
+    /**
      * Function: takes a sorted array and convert it into a balanced binary search tree using ArrayToTree, assign the returned result to root
+     * Error condition: array is not sorted in increasing order (tested by isSortedArray)
      * @param array
      */
     public static void UserArrayToTree(int[] array){
-        root = ArrayToTree(array, 0, array.length - 1);
+        if (isSortedArray(array, array.length)){
+            root = ArrayToTree(array, 0, array.length - 1);
+        }
+        else{
+            System.out.println("Array is not sorted, can't convert to tree.");
+        }
     }
 
     /**
